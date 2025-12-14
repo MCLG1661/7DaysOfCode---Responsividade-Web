@@ -16,9 +16,7 @@ medcontrol/
 ├── script.js           # Lógica JavaScript
 
 └── assets/             # Recursos (opcional)
-    
     ├── icons/          # Ícones SVG
-    
     └── images/         # Imagens de perfil
 
 ## 🛠️ Tecnologias Utilizadas
