@@ -10,10 +10,15 @@
 
 medcontrol/
 ├── index.html          # Página principal
+
 ├── style.css           # Estilos completos
+
 ├── script.js           # Lógica JavaScript
+
 └── assets/             # Recursos (opcional)
+    
     ├── icons/          # Ícones SVG
+    
     └── images/         # Imagens de perfil
 
 ## 🛠️ Tecnologias Utilizadas
