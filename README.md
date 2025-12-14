@@ -2,6 +2,7 @@
 
 ## 📋 AluraMed Agenda - Sistema de Consultas Médicas
 
+
 ## 🏥 Sobre o Projeto
 
 É uma aplicação web responsiva desenvolvida para clínicas médicas, permitindo que médicos e médicas tenham controle completo sobre todas as consultas agendadas, sejam presenciais ou remotas. O sistema foi desenvolvido seguindo princípios de Mobile First e Design Responsivo.
