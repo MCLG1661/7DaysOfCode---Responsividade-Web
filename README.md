@@ -6,6 +6,16 @@
 
 É uma aplicação web responsiva desenvolvida para clínicas médicas, permitindo que médicos e médicas tenham controle completo sobre todas as consultas agendadas, sejam presenciais ou remotas. O sistema foi desenvolvido seguindo princípios de Mobile First e Design Responsivo.
 
+## 📁 Estrutura do Projeto
+
+medcontrol/
+├── index.html          # Página principal
+├── style.css           # Estilos completos
+├── script.js           # Lógica JavaScript
+└── assets/             # Recursos (opcional)
+    ├── icons/          # Ícones SVG
+    └── images/         # Imagens de perfil
+
 ## 🛠️ Tecnologias Utilizadas
 
 HTML5 - Estrutura semântica
@@ -36,7 +46,7 @@ Informações completas do paciente (nome, idade, gênero, motivo)
 
 ## 🔍 Sistema de Filtros
 
-Filtro por tipo: Todas / Presenciais / Remotas / Hoje
+Filtro por tipo : Todas / Presenciais / Remotas / Hoje
 
 Busca em tempo real por paciente ou motivo
 
