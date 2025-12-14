@@ -29,6 +29,7 @@ Informações completas do paciente (nome, idade, gênero, motivo)
 ## 🔍 Sistema de Filtros
 
 Filtro por tipo: Todas / Presenciais / Remotas / Hoje
+
 Busca em tempo real por paciente ou motivo
 Interface otimizada para todos os dispositivos
 
