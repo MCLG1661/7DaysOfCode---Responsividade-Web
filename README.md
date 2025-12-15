@@ -68,11 +68,11 @@ Acessibilidade - Navegação por teclado e ARIA labels
 
 ## 👥 Autores
 
-Desenvolvimento Principal: Marcus Guedes
+Desenvolvimento Principal : Marcus Guedes
 
-Design Base: Layout do Figma fornecido
+Design Base : Layout do Figma fornecido
 
-Adaptações: Baseado em código de referência  
+Adaptações : Baseado em código de referência  
 
 ## 🙏 Agradecimentos
 
