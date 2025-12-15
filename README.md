@@ -78,7 +78,7 @@ Adaptações: Baseado em código de referência
 
 À equipe da Alura pelo desafio proposto
 
-À monitora pelo código de referência
+À monitora Natália F. Desenvolvedora Front-end
 
 À comunidade de desenvolvedores por inspirações
 
