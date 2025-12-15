@@ -65,3 +65,23 @@ Unidades Relativas (rem, %, vw) - Responsividade real
 Design System - Cores e espaçamentos consistentes
 
 Acessibilidade - Navegação por teclado e ARIA labels
+
+## 👥 Autores
+
+Desenvolvimento Principal: Marcus Guedes
+
+Design Base: Layout do Figma fornecido
+
+Adaptações: Baseado em código de referência  
+
+## 🙏 Agradecimentos
+
+À equipe da Alura pelo desafio proposto
+
+À monitora pelo código de referência
+
+À comunidade de desenvolvedores por inspirações
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
