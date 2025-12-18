@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AluraMed Control - Sistema de Checagem de Consultas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- CABEÇALHO (nosso design superior + nome da monitora) -->
+    <header class="home">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <div class="logo-text">AluraMed Control - Sistema de Checagem de Consultas</div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="home__info">
+                    <strong>Olá, Dra. Sônia</strong>
+                    <p>Cardiologista • Online</p>
+                    <div class="status-indicator">
+                        <div class="status-dot"></div>
+                        <span>4 consultas hoje</span>
+                    </div>
+                </div>
+                <div class="user-avatar">
+                    <img src="https://images.pexels.com/photos/5452291/pexels-photo-5452291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Foto da Dra. Sônia">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+        <!-- FILTROS (nosso componente superior) -->
+        <div class="filters-container">
+            <div class="filter-tabs">
+                <button class="tab-btn ativo" data-filter="all">
+                    <i class="fas fa-list"></i> Todas
+                </button>
+                <button class="tab-btn" data-filter="in-person">
+                    <i class="fas fa-user-md"></i> Presenciais
+                </button>
+                <button class="tab-btn" data-filter="remote">
+                    <i class="fas fa-video"></i> Remotas
+                </button>
+                <button class="tab-btn" data-filter="today">
+                    <i class="fas fa-calendar-alt"></i> Hoje
+                </button>
+                <button class="tab-btn" data-filter="tomorrow">
+                    <i class="fas fa-calendar-day"></i> Amanhã
+                </button>
+            </div>
+            
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Pesquisar paciente, motivo...">
+            </div>
+        </div>
+        
+        <!-- LISTA DE CONSULTAS (estrutura da monitora + nossa funcionalidade) -->
+        <section class="consultas">
+            <div class="consultas__data">
+                <strong>Hoje</strong>
+            </div>
+            
+            <ul class="consultations-list" id="consultations-today">
+                <!-- Cards de Hoje serão inseridos aqui pelo JavaScript -->
+            </ul>
+
+            <div class="consultas__data">
+                <strong>Amanhã</strong>
+            </div>
+
+            <ul class="consultations-list" id="consultations-tomorrow">
+                <!-- Cards de Amanhã serão inseridos aqui pelo JavaScript -->
+            </ul>
+            
+            <!-- Área para consultas carregadas via JavaScript -->
+            <div id="dynamic-consultations"></div>
+            
+            <!-- Mensagem quando não houver resultados -->
+            <div class="no-results" id="no-results" style="display: none;">
+                <i class="fas fa-search"></i>
+                <p>Nenhuma consulta encontrada com os filtros atuais.</p>
+            </div>
+        </section>
+
+        <!-- FORMULÁRIO DE NOVA CONSULTA (NOSSA FUNCIONALIDADE) -->
+        <section class="add-consultation-form-section">
+            <form class="add-consultation-form" id="add-consultation-form">
+                <h3>Adicionar Nova Consulta</h3>
+                <div class="form-group">
+                    <label for="patient-name">Nome do Paciente</label>
+                    <input type="text" id="patient-name" name="patient-name" placeholder="Digite o nome completo" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Tipo de Consulta</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="type-remote" name="consultation-type" value="remote" checked>
+                            <label for="type-remote">Remota</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="type-in-person" name="consultation-type" value="in-person">
+                            <label for="type-in-person">Presencial</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="consultation-date">Data e Horário</label>
+                    <input type="datetime-local" id="consultation-date" name="consultation-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="observations">Observações</label>
+                    <textarea id="observations" name="observations" rows="3" placeholder="Sintomas, queixas, etc."></textarea>
+                </div>
+                <button type="submit" class="btn-primario">Agendar Consulta</button>
+            </form>
+        </section>
+
+        <!-- PÁGINA DE CLIENTES (NOVO) -->
+        <section id="clientes-page" class="page-content hidden">
+            <div class="page-header">
+                <i class="fas fa-users"></i>
+                <h2>Clientes</h2>
+            </div>
+            <p>Aqui será exibida a lista de clientes cadastrados.</p>
+        </section>
+
+        <!-- PÁGINA DE RELATÓRIOS (NOVO) -->
+        <section id="relatorios-page" class="page-content hidden">
+            <div class="page-header">
+                <i class="fas fa-chart-bar"></i>
+                <h2>Relatórios</h2>
+            </div>
+            <p>Aqui serão exibidos os relatórios de performance e agendamentos.</p>
+        </section>
+
+        <!-- PÁGINA DE MENU (NOVO) -->
+        <section id="menu-page" class="page-content hidden">
+            <div class="page-header">
+                <i class="fas fa-bars"></i>
+                <h2>Menu</h2>
+            </div>
+            <ul class="menu-index-list">
+                <li>
+                    <a href="#" class="menu-index-item" data-page="consultas">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Ver minhas consultas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-index-item" data-page="clientes">
+                        <i class="fas fa-users"></i>
+                        <span>Gerenciar Clientes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-index-item" data-page="relatorios">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Visualizar Relatórios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="menu-index-item" id="menu-profile-settings">
+                        <i class="fas fa-user-cog"></i>
+                        <span>Configurações do Perfil</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- OVERLAY para menu flutuante -->
+    <div class="floating-overlay" id="floating-overlay"></div>
+
+    <!-- MENU FLUTUANTE EXPANDIDO (nossa funcionalidade premium) -->
+    <div class="floating-menu" id="floating-menu">
+        <button class="floating-option home-consultation" id="home-consultation-btn">
+            <div class="option-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <div class="option-text">
+                <strong>Nova consulta domiciliar</strong>
+                <span>Agende visita na casa do paciente</span>
+            </div>
+        </button>
+        
+        <button class="floating-option video-consultation" id="video-consultation-btn">
+            <div class="option-icon">
+                <i class="fas fa-video"></i>
+            </div>
+            <div class="option-text">
+                <strong>Nova consulta por vídeo</strong>
+                <span>Agende uma teleconsulta</span>
+            </div>
+        </button>
+    </div>
+
+    <!-- BOTÃO FLUTUANTE (estilo da monitora + nossa funcionalidade) -->
+    <div class="botao__flutuante">
+        <button class="botao__flutuante-cadastro" id="floating-btn" aria-label="Abrir menu de novas consultas">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+
+    <!-- RODAPÉ (estilo da monitora + nossa navegação) -->
+    <footer class="rodape">
+        <nav>
+            <ul>
+                <li>
+                    <button class="rodape__acao ativo" data-page="consultas">
+                        <span><i class="fas fa-calendar-alt"></i></span>
+                        Consultas
+                    </button>
+                </li>
+                <li>
+                    <button class="rodape__acao" data-page="clientes">
+                        <span><i class="fas fa-users"></i></span>
+                        Clientes
+                    </button>
+                </li>
+                <li>
+                    <button class="rodape__acao" data-page="relatorios">
+                        <span><i class="fas fa-chart-bar"></i></span>
+                        Relatórios
+                    </button>
+                </li>
+                <li>
+                    <button class="rodape__acao" data-page="menu">
+                        <span><i class="fas fa-bars"></i></span>
+                        Menu
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
